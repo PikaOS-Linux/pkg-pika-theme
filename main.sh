@@ -4,13 +4,12 @@ add-apt-repository https://ppa.pika-os.com
 add-apt-repository ppa:pikaos/pika
 add-apt-repository ppa:kubuntu-ppa/backports
 # Clone Upstream
-cd ./pika-meta
+cd ./pika-theme
 
 # Get build deps
 apt-get build-dep ./ -y
 
 # Build package
-dh_make --createorig
 dpkg-buildpackage
 
 # Move the debs to output
