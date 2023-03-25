@@ -22,6 +22,7 @@ Description: A Meta package to install pika's collection of Themes.
 
 Package: pika-gdm-theme
 Architecture: all
+Pre-Depends: pika-theme, gdm-tools
 Depends: ${misc:Depends},
 	gdm-tools,
 	pika-theme
