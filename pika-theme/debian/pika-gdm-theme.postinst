@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -e
+
+set-gdm-theme set Orchis-Yellow-Dark /usr/share/backgrounds/pika/can_i_come_in__by_neytirix_ddoss9c.jpg
+

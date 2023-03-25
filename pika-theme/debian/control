@@ -17,4 +17,12 @@ Depends: ${misc:Depends},
 	pika-theme-sound,
 	papirus-icon-theme,
 	plymouth-theme-pika-text
+Suggests: pika-gdm-theme
 Description: A Meta package to install pika's collection of Themes.
+
+Package: pika-gdm-theme
+Architecture: all
+Depends: ${misc:Depends},
+	gdm-tools,
+	pika-theme
+Description: A package to set pika's gdm of Themes.
