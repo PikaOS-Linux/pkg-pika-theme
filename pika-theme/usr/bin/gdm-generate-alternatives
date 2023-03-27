@@ -1,0 +1,49 @@
+#! /bin/bash
+
+set -e
+
+THEME=$1
+THEME_DIR=/usr/share/themes/$THEME
+THEME_SHELL_DIR=$THEME_DIR/gnome-shell
+BACKGROUND=$2
+TMP_DIR=/tmp/pika-gdm/$1
+
+if [[ -z $1 ]]
+then
+ echo please type in the name of a theme && exit
+fi
+
+if [[ -d $THEME_DIR ]]
+then
+    echo "Found Theme $THEME in: /usr/share/themes"
+    if [[ -d $THEME_SHELL_DIR ]]
+    then
+        echo -e "Theme has gnome-shell component!\n Generating gresource"
+        rm -rf $TMP_DIR && mkdir -p $TMP_DIR/
+        cp -rvf $THEME_SHELL_DIR/* $TMP_DIR/
+        if [[ ! -z $BACKGROUND ]]
+        then
+            cp $BACKGROUND $TMP_DIR/background
+        else
+            cp /usr/share/backgrounds/gnome/adwaita-d.webp $TMP_DIR/background
+        fi
+        echo -e "#lockDialogGroup {\n background-image: url(\"background\");\n background-size: cover;\n background-repeat: no-repeat;\n background-attachment: fixed;\n background-position: center;\n}" >> $TMP_DIR/gnome-shell.css
+        if [[ ! -f $TMP_DIR/gdm.css ]]
+        then
+            cp -vf $TMP_DIR/gnome-shell.css $TMP_DIR/gdm.css
+        fi
+        echo -e "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<gresources>\n <gresource prefix=\"/org/gnome/shell/theme\">" > $TMP_DIR/gnome-shell-theme.gresource.xml
+        for i in $(find $THEME_SHELL_DIR -type f | sed "s#$THEME_SHELL_DIR/##"); do echo -e "   <file>$i</file>" >> $TMP_DIR/gnome-shell-theme.gresource.xml; done
+        echo -e "   <file>background</file>" >> $TMP_DIR/gnome-shell-theme.gresource.xml
+        echo -e "   <file>gdm.css</file>" >> $TMP_DIR/gnome-shell-theme.gresource.xml
+        echo -e "  </gresource>\n</gresources>" >> $TMP_DIR/gnome-shell-theme.gresource.xml
+        cd $TMP_DIR/
+        glib-compile-resources gnome-shell-theme.gresource.xml
+        cp gnome-shell-theme.gresource $THEME_SHELL_DIR/
+        update-alternatives --install /usr/share/gnome-shell/gdm-theme.gresource gdm-theme.gresource $THEME_SHELL_DIR/gnome-shell-theme.gresource 20
+    else
+        echo "Theme doesn't have gnome-shell component!" && exit 1
+    fi
+else
+    echo "Theme wasn't found in /usr/share/themes" && exit 2
+fi
