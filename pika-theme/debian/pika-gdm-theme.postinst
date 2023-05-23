@@ -2,5 +2,5 @@
 
 set -e
 
-gdm-generate-alternatives Orchis-Yellow-Dark /usr/share/backgrounds/pika/can_i_come_in__by_neytirix_ddoss9c.jpg
+gdm-generate-alternatives Orchis-Yellow-Dark /usr/share/backgrounds/pika/Wallpaper_PikaOS_Parrot_8K.png
 
