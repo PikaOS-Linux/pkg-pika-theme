@@ -2,5 +2,5 @@
 
 set -e
 
-gdm-generate-alternatives Orchis-Yellow-Dark /usr/share/backgrounds/pika/Wallpaper_PikaOS_Parrot_8K.png
+gdm-generate-alternatives Orchis-Yellow-Dark /usr/share/backgrounds/gdm-wallpaper-blurred.png
 
