@@ -2,5 +2,5 @@
 
 set -e
 
-gdm-generate-alternatives Orchis-Yellow-Dark /usr/share/backgrounds/gdm-wallpaper-blurred.png
+gdm-generate-alternatives Jasper-Yellow-Dark /usr/share/backgrounds/gdm-wallpaper-blurred.png
 

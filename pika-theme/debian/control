@@ -9,14 +9,15 @@ Rules-Requires-Root: no
 Package: pika-theme
 Architecture: all
 Depends: ${misc:Depends},
-	orchis-theme-gtk,
+	jasper-theme-gtk,
 	orchis-theme-kde,
 	sddm-theme-orchis,
 	pika-fonts,
 	pika-wallpapers,
 	pika-theme-sound,
 	papirus-icon-theme,
-	plymouth-theme-pika-text
+	plymouth-theme-pika-text,
+	stylepak
 Suggests: pika-gdm-theme
 Description: A Meta package to install pika's collection of Themes.
 

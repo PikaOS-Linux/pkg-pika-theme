@@ -9,3 +9,5 @@ flatpak override --system --filesystem=$HOME/.icons || true
 flatpak override --system --filesystem=$HOME/.local/share/themes || true
 flatpak override --system --filesystem=$HOME/.local/share/icons || true
 flatpak override --system --filesystem=xdg-config/Kvantum || true
+stylepak install-system || true
+stylepak install-user || true
