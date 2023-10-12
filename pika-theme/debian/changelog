@@ -1,3 +1,9 @@
+pika-theme (2.1.0-100pika1) pikauwu; urgency=medium
+
+  * Update to pikauwu
+
+ -- Jeremy Soller <jeremy@system76.com>  Thu, 21 Apr 2017 13:20:00 -0600
+
 pika-theme (2.0.0-100pika2) pikauwu; urgency=medium
 
   * Update to pikauwu
